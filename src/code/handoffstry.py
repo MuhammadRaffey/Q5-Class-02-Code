@@ -48,11 +48,17 @@ async def main():
         handoffs=[coder, explainer],
         # model=OpenAIChatCompletionsModel(model=MODEL, openai_client=client),
     )
+    userInp=input("Enter your prompt: ")
     result = await Runner.run(
         teacher,
-        "Tell me about recursion in programming, I need a code example with proper explanation.",run_config=config
+        input=[
+            {"role": "user", "content": "Hello I am Raffey"},
+            {"role": "assistant", "content": "Hello Raffey, how can I help you today?"},
+            {"role": "user", "content": userInp}
+        ],
+        run_config=config
     )
-    # print(result.final_output)
+    print(result.final_output)
     with open("Handoff result.md", "w") as f:
         f.write(result.final_output)
     print("Handoff result saved to Handoff result.md")
