@@ -21,7 +21,6 @@ client = AsyncOpenAI(
 set_tracing_disabled(disabled=True)
 
 async def main():
-    # This agent will use the custom LLM provider
     agent = Agent(
         name="Teaching Assistant",
         instructions="You are a teaching assistant. You are given a question and you need to answer it in a way that is easy to understand.",
